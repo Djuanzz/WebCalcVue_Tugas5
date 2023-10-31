@@ -26,21 +26,62 @@
   <body>
     <div id="app">
       <div class="container">
-        <div class="d-flex align-items-center justify-content-center">
-          <div class="wadah mx-auto text-light">
-            <div class="merk mt-3"><h1>Kalkulator</h1></div>
-            <div class="display m-5 mb-0 mt-0 text-end p-3">{{result}}</div>
-            <div class="m-5 mt-3">
-              <div class="row g-0">
-                <div class="col-3" v-for="item of arrTombol">
-                  <div
-                    class="lead border border-dark m-2 p-3 rounded-3 tombol text-light"
-                    @click="calculate(item)">
-                    {{item}}
-                  </div>
+        <div class="menu mx-auto rounded-3">
+          <div class="row d-flex justify-content-center my-5 text-light">
+            <div class="submenu col-5 m-3 rounded-2">
+              <h3 @click="changeMenu('kalkulator')">kalkulator</h3>
+            </div>
+            <div class="submenu col-5 m-3 rounded-2">
+              <h3 @click="changeMenu('booklist')">book list</h3>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="kalkulator mx-auto text-light mt-5"
+          v-if="kondisi === 'kalkulator'">
+          <div class="merk mt-3"><h1>Kalkulator</h1></div>
+          <div class="display m-5 mb-0 mt-0 text-end p-3">{{result}}</div>
+          <div class="m-5 mt-3">
+            <div class="row g-0">
+              <div class="col-3" v-for="item of arrTombol">
+                <div
+                  class="lead border border-dark m-2 p-3 rounded-3 tombol text-light"
+                  @click="calculate(item)">
+                  {{item}}
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="booklist mx-auto text-light mt-5 pb-4" v-else>
+          <div class="merk mt-3"><h1>Booklist</h1></div>
+          <div class="row g-0 d-flex justify-content-evenly">
+            <div class="col-4">
+              <h3 class="bg-primary rounded-3">BOOK</h3>
+            </div>
+            <div class="col-4">
+              <h3 class="bg-primary rounded-3">AUTHOR</h3>
+            </div>
+          </div>
+          <hr class="m-0" />
+          <div
+            class="row g-0 d-flex justify-content-evenly"
+            v-for="items of objBook"
+            @click="toggleFav(items)">
+            <div
+              class="d-flex justify-content-evenly"
+              :class="items.fav ? 'isFav' : 'noFav'">
+              <div class="col-4">
+                <h3>{{items.title}}</h3>
+              </div>
+              <div class="col-4">
+                <h3>{{items.author}}</h3>
+              </div>
+            </div>
+
+            <hr class="m-0" />
           </div>
         </div>
       </div>

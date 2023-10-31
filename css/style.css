@@ -6,7 +6,8 @@
   text-align: center;
 }
 
-.wadah {
+.kalkulator,
+.booklist {
   border: 1px solid rgb(255, 255, 255);
   border-radius: 20px;
   max-width: 30rem;
@@ -25,9 +26,28 @@
   background-color: rgb(137, 137, 137);
   font-weight: 700;
   cursor: pointer;
-  transition: 300ms ease;
+  transition: 200ms ease;
 }
 
 .tombol:hover {
   background-color: rgb(255, 156, 107);
+}
+
+.menu {
+  max-width: 33rem;
+  background-color: #2a2a2a;
+}
+
+.submenu {
+  background-color: rgb(137, 137, 137);
+  cursor: pointer;
+  transition: 200ms ease;
+}
+
+.submenu:hover {
+  background-color: rgb(255, 156, 107);
+}
+
+.isFav {
+  background-color: #18a965;
 }
